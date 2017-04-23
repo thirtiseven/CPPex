@@ -1,55 +1,60 @@
 #include <iostream>
 #include <cstring>
 
-using namespace std;
-
-class student{
+class student {
 	char name[10];
-	int id,math,english,averageMath,averageEnglish;
-	static int sumMath,sumEnglish,cnt;
+	int id,math,english;
+	float average_math,average_english;
+	static int sum_math,sum_english,cnt;
 	public:
-		int sumOfTwo;
-		void setZero(){
-			sumMath = 0;
-			sumEnglish = 0;
+		int sum_of_two;
+		void set_zero() {
+			sum_math = 0;
+			sum_english = 0;
 		}
 		student(){
-			cin >> name >> id;
+			std::cout << "Enter name and id: ";
+			std::cin >> name >> id;
 		}
-		~student(){}
-		void setGrade(int mat,int eng){
+		student(int temp){
+			strcpy(name, "temp");
+			id = 9999;
+		}
+		~student() {
+			;
+		}
+		void set_grade(int mat,int eng) {
 			math = mat;
 			english = eng;
 		}
-		void sum(){
-			sumMath += math;
-			sumEnglish += english; 
-			sumOfTwo = math + english;
+		void sum() { 
+			sum_math += math;
+			sum_english += english; 
+			sum_of_two = math + english;
 			cnt++;
 		}
-		void average(){
-			averageMath = sumMath / cnt;
-			averageEnglish = sumEnglish / cnt;
+		void average(int n) {
+			average_math = (float)(sum_math / (float)n);
+			average_english = (float)(sum_english / (float)n);
 		}
-		void printStudent(){
-			cout << name << '\t' << id << '\t' << math << '\t' << english << endl;
+		void print_student() {
+			std::cout << name << '\t' << id << '\t' << math << '\t' << english << std::endl;
 		}
-		void printName(){
-			cout << name ;
-		}
-		void printAverM(){
-			cout << averageMath;
-		}
-		void printAverE(){
-			cout << averageEnglish;
+		void print (int a){
+			switch (a) {
+				case 1: std::cout << name; break;
+				case 2: std::cout << average_math; break;
+				case 3: std::cout << average_english; break;
+				default: return;
+			}
 		}
 };
 
 void sort(student *s, int n){
-	student a;
+	student a(1);
 	for (int i = 0; i <n - 1; i++){
 		for (int j = i + 1; j < n; j++){
-			if ((s + i)->sumOfTwo < (s + j)->sumOfTwo){
+			if ((s + i)->sum_of_two < (s + j)->sum_of_two){
 				a = *(s + i); 
 				*(s + i) = *(s + j); 
 				*(s + j) = a;
@@ -58,24 +63,33 @@ void sort(student *s, int n){
 	}
 }
 
+int student::sum_math;
+int student::sum_english;
+int student::cnt;
+
 int main(int argc, char *argv[]) {
 	int n;
-	cin >> n;
+	std::cin >> n;
 	student *p = new student[n];
-	int tempMath,tempEnglish;
-	p[0].setZero();
+	int temp_math,temp_english;
+	p[0].set_zero();
 	for(int i = 0;i < n;i++){
-		cout << "Enter grade of ";
-		p[i].printName();
-		cout << ":";
-		cin >> tempMath >> tempEnglish;
-		p[i].setGrade(tempMath, tempEnglish);
+		std::cout << "Enter grade of ";
+		p[i].print(1);
+		std::cout << ":";
+		std::cin >> temp_math >> temp_english;
+		p[i].set_grade(temp_math, temp_english);
 		p[i].sum();
 	}
-	p[n-1].average();
-	cout << "The average grade of math is ";
-	p[n-1].printAverM();
-	p[n-1].printAverE();
-	sort(p,n);
+	p[n-1].average(n);
+	std::cout << "The average grade of math is ";
+	p[n-1].print(2);
+	std::cout << "\nThe average grade of english is ";
+	p[n-1].print(3);
+	std::cout << std::endl;
+	sort(p,n-1);
+	for(int i = 0;i <= n/5;i++){
+		p[i].print_student();
+	}
 	return 0;
 }
