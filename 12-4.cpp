@@ -1,7 +1,7 @@
 #include <iostream>
 
 struct complex {
-	float real,image;
+	float real, image;
 };
 
 void input_complex(complex *p) { 
