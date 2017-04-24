@@ -8,11 +8,13 @@ struct student {
 };
 
 void input(student *p, int n) {
-	int temp_id,temp_cpp,temp_eng;
+	int temp_id, temp_cpp, temp_eng;
 	for (int i = 0; i<n; i++) {
 		std::cout << "请输入第" << i + 1 << "个学生的学号 c++成绩 英语成绩 :";
 		std::cin >> temp_id >> temp_cpp >> temp_eng;
-		p[i].id = temp_id; p[i].cpp = temp_cpp; p[i].eng = temp_eng;
+		p[i].id = temp_id; 
+		p[i].cpp = temp_cpp; 
+		p[i].eng = temp_eng;
 	}
 }
 
@@ -24,8 +26,8 @@ void sum(student *p, int n) {
 
 void sort(student *s, int n) {
 	student a;
-	for (int i = 0; i<n - 1; i++) {
-		for (int j = i + 1; j<n; j++) {
+	for (int i = 0; i < n - 1; i++) {
+		for (int j = i + 1; j < n; j++) {
 			if ((s + i)->sum < (s + j)->sum) {
 				a = *(s + i); 
 				*(s + i) = *(s + j); 
@@ -55,5 +57,4 @@ int main(int argc, char *argv[]){
 	output(p, n);
 	delete[]p;
 	return 0;
-	
 }
