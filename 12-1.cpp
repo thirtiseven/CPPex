@@ -1,20 +1,18 @@
 #include <iostream>
 
-using namespace std;
-
-struct{
+struct {
 	int a,b;
-}s1,s2;
+}s1, s2;
 
-struct S{
+struct S {
 	int a,b;
 }s3,s4;
 
 int main(int argc, char *argv[]) {
-	cin >> s1.a >> s1.b >> s2.a >> s2.b;
+	std::cin >> s1.a >> s1.b >> s2.a >> s2.b;
 	s3.a = s1.a;
 	s3.b = s1.b;
 	s4.a = s2.a;
 	s4.b = s2.b;
-	cout << s3.a << " " << s3.b << " " << s4.a << " " << s4.b << endl;
+	std::cout << s3.a << " " << s3.b << " " << s4.a << " " << s4.b << std::endl;
 }

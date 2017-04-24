@@ -1,37 +1,32 @@
 #include <iostream>
 
-using namespace std;
-
-class Rect{
+class rect {
 	private:
-		double Left,Top,Right,Bottom,C,S;
+		double left, top, right, bottom, c, s;
 	public:
-		void inputRect(){
-			cin >> Left >> Top >> Right >> Bottom;
+		void input_rect(){
+			std::cin >> left >> top >> right >> bottom;
 		}
-		
-		void solveC(){
-			C = (Right - Left) * 2 + (Top - Bottom) * 2;
+		void solve_c(){
+			c = (right - left) * 2 + (top - bottom) * 2;
 		}
-		
-		void solveS(){
-			S = (Right - Left) * (Top - Bottom);
-		}
-		
-		void printRect(){
-			cout <<"C = " << C << " S = " << S << endl;
+		void solve_s(){
+			s = (right - left) * (top - bottom);
+		}		
+		void print_rect(){
+			std::cout <<"C = " << c << ", S = " << s << std::endl;
 		}
 };
 
 int main(int argc, char *argv[]) {
 	int n;
-	cin >> n;
-	Rect *p = new Rect[n];
-	for(int i = 0;i < n;i++){
-		p[i].inputRect();
-		p[i].solveC();
-		p[i].solveS();
-		p[i].printRect();
+	std::cin >> n;
+	rect *p = new rect[n];
+	for(int i = 0;i < n;i++) {
+		p[i].input_rect();
+		p[i].solve_c();
+		p[i].solve_s();
+		p[i].print_rect();
 	}
 	return 0;
 }

@@ -1,15 +1,13 @@
 #include <iostream>
 #include <cmath>
 
-using namespace std;
-
-struct point{
-	double x,y,z;
+struct point {
+	double x, y, z;
 };
 
 int main(int argc, char *argv[]) {
 	point a,b;
-	cin >> a.x >> a.y >> a.z;
-	cin >> b.x >> b.y >> b.z;
-	cout << sqrt(pow(a.x-b.x,2) + pow(a.y-b.y,2) + pow(a.z-b.z,2)) << endl;
+	std::cin >> a.x >> a.y >> a.z;
+	std::cin >> b.x >> b.y >> b.z;
+	std::cout << std::sqrt(pow(a.x-b.x,2) + std::pow(a.y-b.y,2) + std::pow(a.z-b.z,2)) << std::endl;
 }
