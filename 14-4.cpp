@@ -1,5 +1,4 @@
 #include <iostream>
-
 #define MAXSIZE 100000
 
 class c_array {

@@ -5,7 +5,7 @@ class student {
 	char name[10];
 	int id,math,english;
 	float average_math,average_english;
-	static int sum_math,sum_english,cnt;
+	static int sum_math,sum_english;
 	public:
 		int sum_of_two;
 		void set_zero() {
@@ -31,7 +31,6 @@ class student {
 			sum_math += math;
 			sum_english += english; 
 			sum_of_two = math + english;
-			cnt++;
 		}
 		void average(int n) {
 			average_math = (float)(sum_math / (float)n);
@@ -52,9 +51,9 @@ class student {
 
 void sort(student *s, int n){
 	student a(1);
-	for (int i = 0; i <n - 1; i++){
+	for (int i = 0; i < n - 1; i++){
 		for (int j = i + 1; j < n; j++){
-			if ((s + i)->sum_of_two < (s + j)->sum_of_two){
+			if ((s + i)->sum_of_two > (s + j)->sum_of_two){
 				a = *(s + i); 
 				*(s + i) = *(s + j); 
 				*(s + j) = a;
@@ -65,13 +64,12 @@ void sort(student *s, int n){
 
 int student::sum_math;
 int student::sum_english;
-int student::cnt;
 
 int main(int argc, char *argv[]) {
 	int n;
 	std::cin >> n;
 	student *p = new student[n];
-	int temp_math,temp_english;
+	int temp_math, temp_english;
 	p[0].set_zero();
 	for(int i = 0;i < n;i++){
 		std::cout << "Enter grade of ";
@@ -88,8 +86,9 @@ int main(int argc, char *argv[]) {
 	p[n-1].print(3);
 	std::cout << std::endl;
 	sort(p,n-1);
-	for(int i = 0;i <= n/5;i++){
+	for(int i = 0;i < n/5;i++){
 		p[i].print_student();
 	}
+	delete []p;
 	return 0;
 }
