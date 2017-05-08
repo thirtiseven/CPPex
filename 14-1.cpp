@@ -1,5 +1,4 @@
 #include <iostream>
-using namespace std;
 
 class T{
 	int x,y;
@@ -9,7 +8,7 @@ class T{
 			this -> y = y;
 		}
 		void Print() {
-			cout << x << " - " << y << " = " << x-y << endl;
+			std::cout << x << " - " << y << " = " << x-y << std::endl;
 		}
 };
 
