@@ -63,6 +63,14 @@ int main(int argc, char *argv[]) {
 	point nr(ra, rb);
 	rect m(ml, mr);
 	rect n(nl, nr);
-	std::cout << (m < n) << " " << (m > n) << std::endl;
+	m.solve();
+	n.solve();
+	if(m < n) {
+		std::cout << "m < n" << std::endl;
+	}
+	if(m > n) {
+		std::cout << "m > n" << std::endl;
+	}
+
 	return 0;
 }

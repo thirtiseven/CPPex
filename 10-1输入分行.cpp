@@ -1,27 +1,25 @@
 #include <iostream>
 
-using namespace std;
-
-void Input(int *a,int n = 12){
-	for(int i = 0;i < n;i++){
-		cin >> *a++;
+void input(int *a, int n = 12) {
+	for(int i = 0;i < n;i++) {
+		std::cin >> *a++;
 	}
 }
 
-void Output(int *a,int n = 12){
-	for(int i = 0;i < n;i++){
-		cout << *a++;
-		if((i+1)%4==0){
-			cout << endl;
+void output(int *a,int n = 12) {
+	for(int i = 0; i < n; i++){
+		std::cout << *a++;
+		if((i + 1) % 4 == 0){
+			std::cout << std::endl;
 		}
 	}
 }
 
-int main(void){
-	int a[12] , *p;
+int main(int argc, char *argv[]) {
+	int a[12], *p;
 	p = a;
-	Input(p);
-	Output(p);
+	input(p);
+	output(p);
 	return 0;
 }
 

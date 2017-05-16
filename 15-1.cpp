@@ -8,40 +8,33 @@ class point {
 			x = a;
 			y = b;
 		}
-		point& operator++();
-		point operator++(int);
-		point& operator--();
-		point operator--(int);
+		point& operator++() {
+			x++;
+			y++;
+			return *this;
+		}
+		point operator++(int){
+			point temp = *this;
+			x++;
+			y++;
+			return temp;
+		}
+		point& operator--() {
+			x--;
+			y--;
+			return *this;
+		}
+
+		point operator--(int) {
+			point temp = *this;
+			x--;
+			y--;
+			return temp;
+		}
 		void show() {
 			std::cout << x << " " << y << std::endl;
 		}
 };
-
-point& point::operator++() {
-	x++;
-	y++;
-	return *this;
-}
-
-point point::operator++(int) {
-	point temp = *this;
-	x++;
-	y++;
-	return temp;
-}
-
-point& point::operator--() {
-	x--;
-	y--;
-	return *this;
-}
-
-point point::operator--(int) {
-	point temp = *this;
-	x--;
-	y--;
-	return temp;
-}
 
 int main(int argc, char *argv[]) {  
 	int mx, my;

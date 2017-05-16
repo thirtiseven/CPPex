@@ -4,12 +4,12 @@
 
 using namespace std;
 
-void Input(char*b[],int n){   
+void Input(char*b[], int n){   
 	char t[MAXSTRLEN];
-	for(int i=0;i<n;i++){
+	for(int i = 0; i < n; i++){
 		cin>>t;
 		b[i]=new char[strlen(t)+1];
-		strcpy(b[i],t);
+		strcpy(b[i], t);
 	}
 }
 

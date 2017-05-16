@@ -8,7 +8,7 @@ double f1(double x){
 }
 
 
-double root(double (*f)(double),double begin,double end){
+double root(double (*f)(double), double begin, double end){
 	double left = f(begin);
 	double point = (begin + end)/2.0;
 	double right = f(end);
