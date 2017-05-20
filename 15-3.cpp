@@ -36,17 +36,18 @@ class my_string {
 			strcpy(t,s);  
 			return *this;  
 		}  
-		
-		my_string operator + (my_string& add_part) const {
-			//return my_string(strcat(t, add_part.mem));
-			char ww[] = "N/A";
-			char* w;
-			w = ww;
-			my_string temp(w);
-			temp.t=new char [ strlen(t)+strlen(add_part.t)+1 ];
-			strcpy(temp.t,t);
-			strcat(temp.t,add_part.t);
-			return temp;
+		my_string operator + (my_string& add_part) {
+			int len = strlen(t) + strlen(add_part.t);
+			char *w = new char[len + 1];
+			strcpy(w, t);
+			for(int i = strlen(t);i <= len; i++) {
+				w[i] = add_part.t[i - strlen(t)];
+			}
+			delete []t;
+			t = new char[len + 1];
+			strcpy(t, w);
+			delete []w;
+			return *this;
 		};
 		int operator ~ () const{
 			return strlen(mem);
@@ -65,3 +66,80 @@ int main(int argc, char *argv[]) {
 	test3.output();
 	return 0;
 }
+
+
+
+
+/*
+#include <iostream>
+#include <cstring>
+using namespace std;
+class String
+{
+	 char *A;
+public:
+	String(char *s = NULL)
+	{
+		if(s)
+		{
+			A = new char[strlen(s) + 1];
+			strcpy(A, s);
+		}
+		else A = NULL;
+	}
+	~String()
+	{
+		delete[]A;
+	}
+	String& operator=(String& t)
+	{
+		if (t.A)
+		{
+			char *s = new char[strlen(t.A) + 1];
+			strcpy(s, t.A);
+			delete[]A;
+			A = s;
+		}
+		else A = NULL;
+		return *this;
+	}
+	int  operator~()
+	{
+		if (A) return strlen(A);
+		else return 0;
+	}
+	String& operator+(String& t)
+	{
+		
+		char* b;
+		int L;
+		L = strlen(A) + strlen(t.A); 
+		b = new char[L+1];
+		strcpy(b, A);
+		for (int i = strlen(A); i <= L; i++)
+		{
+			b[i] = t.A[i - strlen(A)];
+		}
+		delete[]A;
+		A = new char[L + 1];
+		strcpy(A, b);
+		delete[]b;
+		return *this;
+	}
+	void show()
+	{
+		cout << A << endl;
+	}
+};
+int main()
+{
+	String s1("南通大学"), s2("图书馆"),s3;
+	s1.show(); s2.show();
+	cout<<~s1<< " " << ~s2<< endl;
+	s3 = (s1 + s2); s3.show();
+	s1 = s2;
+	s1.show(); s2.show();
+	system("pause");
+	return 0;
+}
+*/
