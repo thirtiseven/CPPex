@@ -1,92 +1,79 @@
 #include <iostream>
-using namespace std;
-class Matrix
-{
-	int *m,M,N;
-public:
-	Matrix(int m1=0, int n1=0)
-	{
-		m = new int[m1*n1];
-		M = m1;
-		N = n1;
-	}
-	int getM() { int m2; m2 = M; return m2; }
-	int getN() { int n2; n2 = N; return n2; }
-	~Matrix()
-	{
-		delete[]m;
-	}
-	void Input()
-	{
-		cout << "输入矩阵" << endl;
-		for (int i = 0; i < M*N; i++)
-		{
-			cin >> m[i];
+
+class matrix {
+	private:
+		int *m, l, c;
+	public:
+		matrix(int line = 0, int col = 0) {
+			l = line;
+			c = col;
+			m = new int[line * col + 1];
+			std::cout << "Enter a matrix>>>\n"; 
+			for(int i = 0; i < line * col; i++) {
+				std::cin >> m[i];
+			}
 		}
-	}
-	void Output()
-	{
-		for (int i = 0; i < M*N; i++)
-		{
-			cout << m[i]<<"  ";
-			if ((i + 1) % N == 0) cout << endl;
+		
+		~matrix() {
+			delete[] m;
 		}
-	}
-	Matrix& operator+(Matrix& t);
-	Matrix& operator-(Matrix& t);
-	Matrix& operator=(Matrix& t);
+		
+		void show() {
+			for(int i = 0; i < l * c; i++) {
+				std::cout << m[i] << " ";
+				if((i+1)%c == 0) {
+					std::cout << "\n";
+				}
+			}
+			std::cout << "\n";
+		}
+		
+		int get(int ca) {
+			if(ca == -2) {
+				return l;
+			}
+			if(ca == -1) {
+				return c;
+			}
+			if(ca >=0) {
+				return m[ca];
+			}
+			return 0;
+		}
+		
+		matrix& operator+(matrix& add) {
+			for (int i = 0; i < add.get(-1) * add.get(-2); i++) {
+				m[i] = m[i] + add.get(i);
+			}
+			return *this;
+
+		}
+		
+		matrix& operator-(matrix& min) {
+			for (int i = 0; i < min.get(-1) * min.get(-2); i++) {
+				m[i] = m[i] - min.get(i);
+			}
+			return *this;
+		}
+		
+		matrix& operator=(matrix& equ) {
+			for (int i = 0; i < equ.get(-1) * equ.get(-2); i++) {
+				m[i] = equ.get(i);
+			}
+			return *this;
+		}
+		
 };
-Matrix& Matrix:: operator+(Matrix& t)
-{
-	
-	for (int i = 0; i < t.getM()*t.getN(); i++)
-	{
-		m[i] = m[i] + t.m[i];
-	}
-	return *this;
 
-}
-Matrix& Matrix:: operator-(Matrix& t)
-{
-	
-	
-	for (int i = 0; i < t.getM()*t.getN(); i++)
-	{
-		m[i] =m[i] - t.m[i];
-	}
-	return *this;
-}
-Matrix& Matrix:: operator=(Matrix& t)
-{
-	
-	for (int i = 0; i < t.getM()*t.getN(); i++)
-	{
-		m[i] = t.m[i];
-	}
-	return *this;
-}
-
-
-int main()
-{
-	int m3, n3;
-	
-	cout << "输入行数  列数" << endl;
-	cin >> m3 >> n3;
-	Matrix a(m3, n3), b(m3, n3), c(m3, n3), d(m3, n3);//c没有申请内存
-	a.Input();
-	b.Input();
-	c.Input();
-	d.Input();
-	a.Output();
-	b.Output();
-	d = a;
-	c = a + b;
-	c.Output();
-	c = d - b;
-	c.Output();
-	a = b;
-	a.Output();
-	system("pause");
+int main(int argc, char *argv[]) {  
+	int line, col;
+	std::cin >> line >> col;
+	matrix test1(line, col), test2(line, col), test3(line, col), test4(line, col);
+	test1.show();
+	test1 = (test2 + test4);
+	test1.show();
+	test1 = (test3 - test4);
+	test1.show();
 	return 0;
 }
+

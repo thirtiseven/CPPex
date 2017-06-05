@@ -42,7 +42,7 @@ class rect {
 			right = t;
 		}
 		float solve() {
-			area = (right.get_point(1) - left.get_point(1)) * (left.get_point(1) - right.get_point(2));
+			area = (right.get_point(1) - left.get_point(1)) * (left.get_point(2) - right.get_point(2));
 			return area;
 		}
 		bool operator > (const rect& t) {
