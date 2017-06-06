@@ -4,7 +4,7 @@ class point {
 	private:
 		float x, y;
 	public:
-		point(float a, float b) {
+		point(float a = 0, float b = 0) {
 			x = a;
 			y = b;
 		}
