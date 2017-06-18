@@ -17,10 +17,10 @@ float average(int *a, int n){
 	return avg;
 }
 
-int max(int (*a)[6],int n,int *r,int *c){
-	for(int i = 0; i < n; i++){
-		for(int j = 0; j < 6; j++){	
-			if(a[*r][*c] < a[i][j]){	
+int max(int (*a)[6], int n, int *r, int *c){
+	for(int i = 0; i < n; i++) {
+		for(int j = 0; j < 6; j++) {	
+			if(a[*r][*c] < a[i][j]) {	
 				*r = i;
 				*c = j;
 			}

@@ -2,25 +2,23 @@
 #include <string>
 #define MAXSTRLEN 100
 
-using namespace std;
-
-void Input(char*b[], int n){   
+void input(char *b[], int n) {   
 	char t[MAXSTRLEN];
-	for(int i = 0; i < n; i++){
-		cin>>t;
+	for(int i = 0; i < n; i++) {
+		std::cin >> t;
 		b[i]=new char[strlen(t)+1];
 		strcpy(b[i], t);
 	}
 }
 
 
-void mysort(char*p[],int n){
+void mysort(char *p[], int n) {
 	int min;
 	char *temp;
-	for(int i = 0;i < n;i++){
+	for(int i = 0; i < n; i++) {
 		min = i;
-		for(int j = i+1;j < n;j++){
-			if(strcmp(p[min],p[j])>0){
+		for(int j = i + 1; j < n; j++) {
+			if(strcmp(p[min],p[j])>0) {
 				min = j;
 			}
 		}
@@ -30,15 +28,15 @@ void mysort(char*p[],int n){
 	}
 }
 
-int main(int argc, char *argv[]){   
+int main(int argc, char *argv[]) {   
 	int n;
-	cin >> n;
+	std::cin >> n;
 	char **p;
 	p = new char*[n];
-	Input(p,n);
+	input(p,n);
 	mysort(p,n);
-	for(int i = 0;i < n;i++){
-		cout << p[i] << endl;
+	for(int i = 0;i < n;i++) {
+		std::cout << p[i] << std::endl;
 	}
 	return 0;
 }

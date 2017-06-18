@@ -4,7 +4,7 @@ class point {
 	private:
 		int x, y;
 	public:
-		point(int a, int b) {
+		point(int a = 0, int b = 0) {
 			x = a;
 			y = b;
 		}
@@ -13,7 +13,7 @@ class point {
 			y++;
 			return *this;
 		}
-		point operator++(int){
+		point operator++(int) {
 			point temp = *this;
 			x++;
 			y++;

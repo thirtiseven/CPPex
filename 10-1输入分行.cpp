@@ -1,16 +1,16 @@
 #include <iostream>
 
 void input(int *a, int n = 12) {
-	for(int i = 0;i < n;i++) {
+	for(int i = 0; i < n; i++) {
 		std::cin >> *a++;
 	}
 }
 
 void output(int *a,int n = 12) {
-	for(int i = 0; i < n; i++){
+	for(int i = 0; i < n; i++) {
 		std::cout << *a++;
 		if((i + 1) % 4 == 0){
-			std::cout << std::endl;
+			std::cout << '\n';
 		}
 	}
 }

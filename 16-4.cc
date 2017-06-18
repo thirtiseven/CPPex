@@ -1,7 +1,5 @@
 #include <iostream>
 
-#define inf 0x7f7f7f7f
-
 class my_array {
 	protected:
 		int size;

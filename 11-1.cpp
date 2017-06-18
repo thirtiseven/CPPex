@@ -1,10 +1,10 @@
 #include <iostream>
 
-int sum(int a, int b){
+int sum(int a, int b) {
 	return a+b;
 }
 
-void my_swap(int *a, int *b){
+void my_swap(int *a, int *b) {
 	int t = *a;
 	*a = *b;
 	*b = t;

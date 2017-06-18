@@ -5,9 +5,9 @@
 
 using namespace std;
 
-int strcomp(char * s, char * t){
+int strcomp(char * s, char * t) {
 	int len = strlen(s) >= strlen(t)? strlen(s): strlen(t);
-	for(int i = 0; i < len; i++){
+	for(int i = 0; i < len; i++) {
 		if(s[i] < t[i] || s[i] == '\0'){
 			return -1;
 		}else if(s[i] > t[i] || t[i] == '\0'){

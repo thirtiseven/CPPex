@@ -8,10 +8,6 @@ class point {
 			x = a;
 			y = b;
 		}
-		point() {
-			x = 0;
-			y = 0;
-		}
 		float get_point(int n) {
 			switch(n) {
 				case 1: 
@@ -32,11 +28,11 @@ class rect {
 		point left, right;
 		float area;
 	public:
-		rect(point l, point r){
+		rect(point l, point r) {
 			left = l;
 			right = r;
 		}
-		rect(){
+		rect() {
 			point t(0,0);
 			left = t;
 			right = t;
@@ -67,10 +63,10 @@ int main(int argc, char *argv[]) {
 	n.solve();
 	if(m < n) {
 		std::cout << "m < n" << std::endl;
-	}
-	if(m > n) {
+	} else if(m > n) {
 		std::cout << "m > n" << std::endl;
+	} else {
+		std::cout << "m = n" << std::endl;
 	}
-
 	return 0;
 }

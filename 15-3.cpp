@@ -51,9 +51,6 @@ class my_string {
 int main(int argc, char *argv[]) {  
 	my_string test1, test2, test3;
 	std::cout << ~test1 << " " << ~test2 << " " << ~test3 << std::endl;
-	test1.output();
-	test2.output();
-	test3.output();
 	test2 = (test1 + test3);
 	test1.output();
 	test2.output();
